@@ -1,4 +1,4 @@
-package com.example.distance;
+package com.fuchs.distance;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
