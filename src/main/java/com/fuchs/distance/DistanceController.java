@@ -19,17 +19,17 @@ class DistanceController {
     @GetMapping("/distance")
     public Map<String, Double> getDistance(@RequestParam String from, @RequestParam String to) {
 
-        String cleanedFrom = from.trim();
-        String cleanedTo = to.trim();
-        // Додаємо Україну для кращої точності (якщо немає)
-        if (!cleanedFrom.toLowerCase().contains("україна")) {
-            cleanedFrom += ", Україна";
-        }
-        if (!cleanedTo.toLowerCase().contains("україна")) {
-            cleanedTo += ", Україна";
-        }
+//        String cleanedFrom = from.trim();
+//        String cleanedTo = to.trim();
+//        // Додаємо Україну для кращої точності (якщо немає)
+//        if (!cleanedFrom.toLowerCase().contains("україна")) {
+//            cleanedFrom += ", Україна";
+//        }
+//        if (!cleanedTo.toLowerCase().contains("україна")) {
+//            cleanedTo += ", Україна";
+//        }
 
-        double distance = googleApiService.getDistance(cleanedFrom, cleanedTo);
+        double distance = googleApiService.getDistance(from, to);
         return Collections.singletonMap("distance_km", distance);
     }
 }
