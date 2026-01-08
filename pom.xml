@@ -32,16 +32,16 @@
             <artifactId>jackson-core</artifactId>
             <version>2.19.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>12.8.1.jre11</version> <!-- або просто 12.8.1, що сумісний з Java 11/17 -->
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.microsoft.sqlserver</groupId>-->
+<!--            <artifactId>mssql-jdbc</artifactId>-->
+<!--            <version>12.8.1.jre11</version> &lt;!&ndash; або просто 12.8.1, що сумісний з Java 11/17 &ndash;&gt;-->
+<!--        </dependency>-->
 
 
         <dependency>
