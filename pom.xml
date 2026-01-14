@@ -43,7 +43,7 @@
 <!--            <version>12.8.1.jre11</version> &lt;!&ndash; або просто 12.8.1, що сумісний з Java 11/17 &ndash;&gt;-->
 <!--        </dependency>-->
 
-        <!-- Source: https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+<!--        Source: https://mvnrepository.com/artifact/org.liquibase/liquibase-core-->
 <!--        <dependency>-->
 <!--            <groupId>org.liquibase</groupId>-->
 <!--            <artifactId>liquibase-core</artifactId>-->
