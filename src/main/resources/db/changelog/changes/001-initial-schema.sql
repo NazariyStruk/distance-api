@@ -24,5 +24,3 @@ CREATE TABLE invoice_items (
     -- article NVARCHAR(50),
     -- item_name NVARCHAR(255)
 );
-
---rollback DROP TABLE invoice_items;
