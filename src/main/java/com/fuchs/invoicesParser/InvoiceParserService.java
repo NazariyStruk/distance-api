@@ -38,6 +38,7 @@ public class InvoiceParserService {
 
         // 5. Парсимо Price (останній токен перед слешем)
         String priceStr = tokens[tokens.length - 1];
+        String test = "";
         BigDecimal price = normalizePrice(priceStr);
 
         // 6. Створюємо та зберігаємо об'єкт
