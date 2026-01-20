@@ -8,6 +8,5 @@ public class InvoiceRequestDto {
     private String descr;
     private String number;
     private String vendorTaxId;
-    private String articul;
     private LocalDate date;
 }

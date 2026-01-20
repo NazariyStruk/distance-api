@@ -3,6 +3,8 @@ package com.fuchs.invoicesParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class InvoiceParserService {
@@ -50,6 +52,7 @@ public class InvoiceParserService {
         // 5. Парсимо Price (останній токен перед слешем)
         String priceStr = tokens[tokens.length - 1];
         BigDecimal price = normalizePrice(priceStr);
+        String extractedArticul = extractArticul(descr);
 
         // 6. Створюємо та зберігаємо об'єкт
         InvoiceItem item = new InvoiceItem();
@@ -59,10 +62,26 @@ public class InvoiceParserService {
         item.setRawDescr(descr);
         item.setVendorTaxId(dto.getVendorTaxId());
         item.setDate(dto.getDate());
-        item.setArticul(dto.getArticul());
+        item.setArticul(extractedArticul);
         item.setUpdatedBy1c(false);
     //TODO перед сейвом перевіряти по invoiceNum and VendorTAxNum. Якщор є ,скіп (та сповіщення badRequest) .Якщо нема - сейв
         repository.save(item);
+    }
+
+
+    // Метод для пошуку артикулу (9 цифр підряд)
+    private String extractArticul(String text) {
+        if (text == null) return null;
+
+        // Регулярний вираз: \b означає межу слова, \d{9} означає рівно 9 цифр
+        // Це знайде "602003027", але пропустить ціну "169.61" або малі числа "250"
+        Pattern pattern = Pattern.compile("\\b\\d{9}\\b");
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            return matcher.group(); // Повертає перше знайдене співпадіння
+        }
+        return null;
     }
 
     // Метод для перетворення "232,42", "169.61", "1,772.77" у BigDecimal
