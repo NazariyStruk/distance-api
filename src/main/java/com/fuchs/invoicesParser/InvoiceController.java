@@ -22,4 +22,14 @@ public class InvoiceController {
             return ResponseEntity.badRequest().body("Error parsing item: " + e.getMessage());
         }
     }
+
+    @PostMapping("/cleanup")
+    public ResponseEntity<String> cleanupInvoice(@RequestBody InvoiceRequestDto request) {
+        try {
+            parserService.deleteAllInvoicesRelatedEntries(request);
+            return ResponseEntity.ok("Old records deleted (if any existed)");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error deleting records: " + e.getMessage());
+        }
+    }
 }

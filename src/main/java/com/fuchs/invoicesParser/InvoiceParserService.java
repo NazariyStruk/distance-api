@@ -1,7 +1,7 @@
 package com.fuchs.invoicesParser;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 
 @Service
@@ -11,6 +11,17 @@ public class InvoiceParserService {
 
     public InvoiceParserService(InvoiceItemRepository repository) {
         this.repository = repository;
+    }
+
+    @Transactional // Обов'язково для операцій delete/update
+    public void deleteAllInvoicesRelatedEntries(InvoiceRequestDto dto) {
+        if (dto.getNumber() != null && dto.getVendorTaxId() != null && dto.getDate() != null) {
+            repository.deleteByNumberAndVendorTaxIdAndDate(
+                    dto.getNumber(),
+                    dto.getVendorTaxId(),
+                    dto.getDate()
+            );
+        }
     }
 
     public void parseAndSave(InvoiceRequestDto dto) {
@@ -38,7 +49,6 @@ public class InvoiceParserService {
 
         // 5. Парсимо Price (останній токен перед слешем)
         String priceStr = tokens[tokens.length - 1];
-        String test = "";
         BigDecimal price = normalizePrice(priceStr);
 
         // 6. Створюємо та зберігаємо об'єкт
@@ -48,7 +58,10 @@ public class InvoiceParserService {
         item.setNumber(dto.getNumber());
         item.setRawDescr(descr);
         item.setVendorTaxId(dto.getVendorTaxId());
-//TODO перед сейвом перевіряти по invoiceNum and VendorTAxNum. Якщор є ,скіп (та сповіщення badRequest) .Якщо нема - сейв
+        item.setDate(dto.getDate());
+        item.setArticul(dto.getArticul());
+        item.setUpdatedBy1c(false);
+    //TODO перед сейвом перевіряти по invoiceNum and VendorTAxNum. Якщор є ,скіп (та сповіщення badRequest) .Якщо нема - сейв
         repository.save(item);
     }
 

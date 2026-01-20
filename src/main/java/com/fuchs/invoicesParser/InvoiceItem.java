@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "invoice_items")
@@ -29,4 +30,13 @@ public class InvoiceItem {
 
     @Column(name = "raw_descr", length = 1000)
     private String rawDescr;    // Зберігаємо оригінал на всяк випадок
+
+    @Column(name = "articul")
+    private String articul;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "updated_by_1c")
+    private boolean updatedBy1c;
 }
