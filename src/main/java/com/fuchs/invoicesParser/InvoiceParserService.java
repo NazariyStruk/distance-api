@@ -26,6 +26,7 @@ public class InvoiceParserService {
         }
     }
 
+    @Transactional
     public void parseAndSave(InvoiceRequestDto dto) {
         String descr = dto.getDescr();
 
