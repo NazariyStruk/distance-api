@@ -3,6 +3,7 @@ package com.fuchs.invoicesParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,29 @@ public class InvoiceParserService {
                     dto.getVendorTaxId(),
                     dto.getDate()
             );
+        }
+    }
+
+    @Transactional
+    public void resetSyncStatus(InvoiceRequestDto dto) {
+        // Перевіряємо, чи прийшли ключові поля
+        if (dto.getNumber() != null && dto.getVendorTaxId() != null && dto.getDate() != null) {
+
+            // 1. Знаходимо всі відповідні записи
+            List<InvoiceItem> items = repository.findAllByNumberAndVendorTaxIdAndDate(
+                    dto.getNumber(),
+                    dto.getVendorTaxId(),
+                    dto.getDate()
+            );
+
+            // 2. Якщо щось знайшли - проходимось по списку і змінюємо статус
+            if (!items.isEmpty()) {
+                for (InvoiceItem item : items) {
+                    item.setUpdatedBy1c(false);
+                }
+                // 3. Зберігаємо зміни (Spring Data оновить усі записи)
+                repository.saveAll(items);
+            }
         }
     }
 
@@ -64,7 +88,7 @@ public class InvoiceParserService {
         item.setVendorTaxId(dto.getVendorTaxId());
         item.setDate(dto.getDate());
         item.setArticul(extractedArticul);
-        item.setUpdatedBy1c(false);
+        item.setUpdatedBy1c(true);
     //TODO перед сейвом перевіряти по invoiceNum and VendorTAxNum. Якщор є ,скіп (та сповіщення badRequest) .Якщо нема - сейв
         repository.save(item);
     }

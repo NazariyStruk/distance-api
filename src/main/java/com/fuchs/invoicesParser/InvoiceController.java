@@ -23,6 +23,16 @@ public class InvoiceController {
         }
     }
 
+    @PostMapping("/reset-status")
+    public ResponseEntity<String> resetStatus(@RequestBody InvoiceRequestDto request) {
+        try {
+            parserService.resetSyncStatus(request);
+            return ResponseEntity.ok("Status 'updatedBy1C' reset to false(0) for matching records.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error resetting status: " + e.getMessage());
+        }
+    }
+
     @PostMapping("/cleanup")
     public ResponseEntity<String> cleanupInvoice(@RequestBody InvoiceRequestDto request) {
         try {
