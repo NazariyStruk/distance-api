@@ -3,7 +3,6 @@ package com.fuchs.invoicesParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +18,7 @@ public class InvoiceParserService {
     @Transactional // Обов'язково для операцій delete/update
     public void deleteAllInvoicesRelatedEntries(InvoiceRequestDto dto) {
         if (dto.getNumber() != null && dto.getVendorTaxId() != null && dto.getDate() != null) {
-            repository.deleteByNumberAndVendorTaxIdAndDate(
+            repository.deleteCustom(
                     dto.getNumber(),
                     dto.getVendorTaxId(),
                     dto.getDate()
@@ -31,22 +30,11 @@ public class InvoiceParserService {
     public void resetSyncStatus(InvoiceRequestDto dto) {
         // Перевіряємо, чи прийшли ключові поля
         if (dto.getNumber() != null && dto.getVendorTaxId() != null && dto.getDate() != null) {
-
-            // 1. Знаходимо всі відповідні записи
-            List<InvoiceItem> items = repository.findAllByNumberAndVendorTaxIdAndDate(
+            repository.resetStatusCustom(
                     dto.getNumber(),
                     dto.getVendorTaxId(),
                     dto.getDate()
             );
-
-            // 2. Якщо щось знайшли - проходимось по списку і змінюємо статус
-            if (!items.isEmpty()) {
-                for (InvoiceItem item : items) {
-                    item.setUpdatedBy1c(false);
-                }
-                // 3. Зберігаємо зміни (Spring Data оновить усі записи)
-                repository.saveAll(items);
-            }
         }
     }
 
@@ -78,6 +66,25 @@ public class InvoiceParserService {
         String priceStr = tokens[tokens.length - 1];
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
+        Double amount = null;
+        String units = null;
+
+        if (extractedArticul != null) {
+            // Шукаємо позицію артикулу в масиві токенів
+            for (int i = 0; i < tokens.length; i++) {
+                // Якщо знайшли токен, який дорівнює нашому артикулу
+                if (tokens[i].equals(extractedArticul)) {
+                    // Перевіряємо, чи є наступні елементи (Amount та Units)
+                    if (i + 2 < tokens.length) {
+                        String rawAmount = tokens[i + 1]; // Наступний після артикулу (напр. "60,00" або "29")
+                        units = tokens[i + 2];            // Через один після артикулу (напр. "K03" або "EA")
+
+                        amount = parseAmount(rawAmount);
+                    }
+                    break; // Знайшли і виходимо з циклу
+                }
+            }
+        }
 
         // 6. Створюємо та зберігаємо об'єкт
         InvoiceItem item = new InvoiceItem();
@@ -88,9 +95,22 @@ public class InvoiceParserService {
         item.setVendorTaxId(dto.getVendorTaxId());
         item.setDate(dto.getDate());
         item.setArticul(extractedArticul);
+        item.setAmount(amount);
+        item.setUnits(units);
         item.setUpdatedBy1c(true);
-    //TODO перед сейвом перевіряти по invoiceNum and VendorTAxNum. Якщор є ,скіп (та сповіщення badRequest) .Якщо нема - сейв
         repository.save(item);
+    }
+
+    private Double parseAmount(String rawAmount) {
+        try {
+            // Замінюємо кому на крапку: "60,00" -> "60.00"
+            String cleanAmount = rawAmount.replace(",", ".");
+            // Парсимо як Double
+            return Double.parseDouble(cleanAmount);
+        } catch (NumberFormatException e) {
+            System.err.println("Failed to parse amount: " + rawAmount);
+            return null;
+        }
     }
 
 

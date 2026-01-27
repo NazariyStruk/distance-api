@@ -39,4 +39,10 @@ public class InvoiceItem {
 
     @Column(name = "updated_by_1c")
     private boolean updatedBy1c;
+
+    @Column(name = "amount")
+    private Double amount;
+
+    @Column(name = "units")
+    private String units;
 }
