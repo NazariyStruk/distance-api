@@ -41,7 +41,7 @@ public class InvoiceItem {
     private boolean updatedBy1c;
 
     @Column(name = "amount")
-    private Double amount;
+    private BigDecimal amount;
 
     @Column(name = "units")
     private String units;

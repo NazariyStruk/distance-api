@@ -66,7 +66,7 @@ public class InvoiceParserService {
         String priceStr = tokens[tokens.length - 1];
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
-        Double amount = null;
+        BigDecimal amount = null;
         String units = null;
 
         if (extractedArticul != null) {
@@ -101,12 +101,12 @@ public class InvoiceParserService {
         repository.save(item);
     }
 
-    private Double parseAmount(String rawAmount) {
+    private BigDecimal parseAmount(String rawAmount) {
         try {
             // Замінюємо кому на крапку: "60,00" -> "60.00"
             String cleanAmount = rawAmount.replace(",", ".");
             // Парсимо як Double
-            return Double.parseDouble(cleanAmount);
+            return new BigDecimal(cleanAmount);
         } catch (NumberFormatException e) {
             System.err.println("Failed to parse amount: " + rawAmount);
             return null;
