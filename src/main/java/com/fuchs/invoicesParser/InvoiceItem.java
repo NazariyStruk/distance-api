@@ -45,4 +45,7 @@ public class InvoiceItem {
 
     @Column(name = "units")
     private String units;
+
+    @Column(name = "quantity")
+    private BigDecimal quantity;
 }

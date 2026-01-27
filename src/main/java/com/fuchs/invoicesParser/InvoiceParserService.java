@@ -3,6 +3,7 @@ package com.fuchs.invoicesParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,7 +67,7 @@ public class InvoiceParserService {
         String priceStr = tokens[tokens.length - 1];
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
-        BigDecimal amount = null;
+        BigDecimal quantity = null;
         String units = null;
 
         if (extractedArticul != null) {
@@ -76,15 +77,17 @@ public class InvoiceParserService {
                 if (tokens[i].equals(extractedArticul)) {
                     // Перевіряємо, чи є наступні елементи (Amount та Units)
                     if (i + 2 < tokens.length) {
-                        String rawAmount = tokens[i + 1]; // Наступний після артикулу (напр. "60,00" або "29")
+                        String rawQuantity = tokens[i + 1]; // Наступний після артикулу (напр. "60,00" або "29")
                         units = tokens[i + 2];            // Через один після артикулу (напр. "K03" або "EA")
 
-                        amount = parseAmount(rawAmount);
+                        quantity = parseQuantity(rawQuantity);
                     }
                     break; // Знайшли і виходимо з циклу
                 }
             }
         }
+
+        BigDecimal totalAmount = normalizePrice(dto.getAmount());
 
         // 6. Створюємо та зберігаємо об'єкт
         InvoiceItem item = new InvoiceItem();
@@ -95,20 +98,28 @@ public class InvoiceParserService {
         item.setVendorTaxId(dto.getVendorTaxId());
         item.setDate(dto.getDate());
         item.setArticul(extractedArticul);
-        item.setAmount(amount);
+        item.setQuantity(quantity);
+        item.setAmount(totalAmount);
         item.setUnits(units);
         item.setUpdatedBy1c(true);
         repository.save(item);
     }
 
-    private BigDecimal parseAmount(String rawAmount) {
+    private BigDecimal parseQuantity(String rawQuantity) {
+        if (rawQuantity == null) return null;
         try {
-            // Замінюємо кому на крапку: "60,00" -> "60.00"
-            String cleanAmount = rawAmount.replace(",", ".");
-            // Парсимо як Double
-            return new BigDecimal(cleanAmount);
+            // 1. Чистимо рядок: "60,00" -> "60.00"
+            String cleanAmount = rawQuantity.replace(",", ".");
+
+            // 2. Створюємо BigDecimal
+            BigDecimal bd = new BigDecimal(cleanAmount);
+
+            // 3. Встановлюємо 2 знаки після коми.
+            // HALF_UP - це стандартне "шкільне" округлення (1.555 -> 1.56, 1.554 -> 1.55)
+            return bd.setScale(2, RoundingMode.HALF_UP);
+
         } catch (NumberFormatException e) {
-            System.err.println("Failed to parse amount: " + rawAmount);
+            System.err.println("Failed to parse quantity: " + rawQuantity);
             return null;
         }
     }
@@ -130,16 +141,20 @@ public class InvoiceParserService {
     }
 
     // Метод для перетворення "232,42", "169.61", "1,772.77" у BigDecimal
-    private BigDecimal normalizePrice(String rawPrice) {
-        // Якщо є і кома, і крапка (напр. 1,772.77) -> прибираємо коми (тисячні)
-        if (rawPrice.contains(",") && rawPrice.contains(".")) {
-            rawPrice = rawPrice.replace(",", "");
+    private BigDecimal normalizePrice(String rawValue) {
+        if (rawValue == null) return null;
+        try {
+            // "1,580.60" -> "1580.60"
+            if (rawValue.contains(",") && rawValue.contains(".")) {
+                rawValue = rawValue.replace(",", "");
+            }
+            // "232,42" -> "232.42" (європейський формат)
+            else if (rawValue.contains(",")) {
+                rawValue = rawValue.replace(",", ".");
+            }
+            return new BigDecimal(rawValue);
+        } catch (Exception e) {
+            return null;
         }
-        // Якщо тільки кома (напр. 232,42) -> замінюємо на крапку
-        else if (rawPrice.contains(",")) {
-            rawPrice = rawPrice.replace(",", ".");
-        }
-
-        return new BigDecimal(rawPrice);
     }
 }
