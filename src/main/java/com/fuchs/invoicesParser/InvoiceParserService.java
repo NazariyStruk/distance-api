@@ -69,6 +69,7 @@ public class InvoiceParserService {
         String extractedArticul = extractArticul(descr);
         BigDecimal quantity = null;
         String units = null;
+        String unitPriceValue = null;
 
         if (extractedArticul != null) {
             // Шукаємо позицію артикулу в масиві токенів
@@ -89,6 +90,11 @@ public class InvoiceParserService {
 
         BigDecimal totalAmount = normalizePrice(dto.getAmount());
 
+
+        if (descr.contains("/ 100")) {
+            unitPriceValue = "100";
+        }
+
         // 6. Створюємо та зберігаємо об'єкт
         InvoiceItem item = new InvoiceItem();
         item.setLineNumber(lineNumber);
@@ -101,6 +107,7 @@ public class InvoiceParserService {
         item.setQuantity(quantity);
         item.setAmount(totalAmount);
         item.setUnits(units);
+        item.setUnitPrice(unitPriceValue);
         item.setUpdatedBy1c(true);
         repository.save(item);
     }
@@ -152,7 +159,10 @@ public class InvoiceParserService {
             else if (rawValue.contains(",")) {
                 rawValue = rawValue.replace(",", ".");
             }
-            return new BigDecimal(rawValue);
+            BigDecimal bd = new BigDecimal(rawValue);
+
+            // ДОДАНО: Примусово встановлюємо 2 знаки після коми
+            return bd.setScale(2, RoundingMode.HALF_UP);
         } catch (Exception e) {
             return null;
         }
