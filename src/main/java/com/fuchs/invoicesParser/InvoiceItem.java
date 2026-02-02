@@ -51,4 +51,7 @@ public class InvoiceItem {
 
     @Column(name = "unit_price")
     private String unitPrice; // Буде зберігати "/ 100" або null
+
+    @Column(name = "weight")
+    private BigDecimal weight;
 }

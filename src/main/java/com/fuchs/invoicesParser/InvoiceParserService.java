@@ -63,7 +63,6 @@ public class InvoiceParserService {
         // 4. Парсимо Line Number (перший токен)
         Integer lineNumber = Integer.parseInt(tokens[0]);
 
-        // 5. Парсимо Price (останній токен перед слешем)
         String priceStr = dto.getTextPrice();
         if (priceStr != null && priceStr.contains("/")) {
             priceStr = priceStr.substring(0, priceStr.indexOf("/")).trim();
@@ -73,22 +72,38 @@ public class InvoiceParserService {
         BigDecimal quantity = null;
         String units = null;
         String unitPriceValue = null;
+        BigDecimal weight = null; // Нове поле
+
+        boolean isGerman = dto.getVendorTaxId() != null && dto.getVendorTaxId().startsWith("DE");
 
         if (extractedArticul != null) {
+            String[] allTokens = descr.split("\\s+");
             // Шукаємо позицію артикулу в масиві токенів
-            for (int i = 0; i < tokens.length; i++) {
+            for (int i = 0; i < allTokens.length; i++) {
                 // Якщо знайшли токен, який дорівнює нашому артикулу
-                if (tokens[i].equals(extractedArticul)) {
+                if (allTokens[i].equals(extractedArticul)) {
                     // Перевіряємо, чи є наступні елементи (Amount та Units)
                     if (i + 2 < tokens.length) {
                         String rawQuantity = tokens[i + 1]; // Наступний після артикулу (напр. "60,00" або "29")
-                        units = tokens[i + 2];            // Через один після артикулу (напр. "K03" або "EA")
+                        units = allTokens[i + 2];            // Через один після артикулу (напр. "K03" або "EA")
 
+                        if (units.contains("/")) {
+                            units = units.substring(0, units.indexOf("/"));
+                        }
                         quantity = parseQuantity(rawQuantity);
+                        if (isGerman && i + 3 < allTokens.length) {
+                            String rawWeight = allTokens[i + 3];
+                            // Перевіряємо, чи це число, бо іноді може бути текст
+                            weight = normalizePrice(rawWeight);
+                        }
                     }
                     break; // Знайшли і виходимо з циклу
                 }
             }
+        }
+
+        if (!isGerman) {
+            weight = extractPolishWeight(descr);
         }
 
         BigDecimal totalAmount = normalizePrice(dto.getAmount());
@@ -114,7 +129,31 @@ public class InvoiceParserService {
         item.setUnits(units);
         item.setUnitPrice(unitPriceValue);
         item.setUpdatedBy1c(true);
+        item.setWeight(weight);
         repository.save(item);
+    }
+
+    // Спеціальний метод для пошуку ваги в польських інвойсах
+    private BigDecimal extractPolishWeight(String descr) {
+        try {
+            String lowerDescr = descr.toLowerCase();
+            // Враховуємо опечатку "weigth" і правильне "weight"
+            int index = lowerDescr.indexOf("net weigth:");
+            if (index == -1) {
+                index = lowerDescr.indexOf("net weight:");
+            }
+
+            if (index != -1) {
+                // Відрізаємо все до двокрапки включно
+                String textAfterLabel = descr.substring(index).split(":")[1].trim();
+                // Беремо перший токен (це має бути число)
+                String rawWeight = textAfterLabel.split("\\s+")[0];
+                return normalizePrice(rawWeight);
+            }
+        } catch (Exception e) {
+            // Якщо щось пішло не так, повертаємо null
+        }
+        return null;
     }
 
     private BigDecimal parseQuantity(String rawQuantity) {
@@ -156,12 +195,16 @@ public class InvoiceParserService {
     private BigDecimal normalizePrice(String rawValue) {
         if (rawValue == null) return null;
         try {
+            rawValue = rawValue.replace(" ", "").replace("\u00A0", "");
             // "1,580.60" -> "1580.60"
             if (rawValue.contains(",") && rawValue.contains(".")) {
-                rawValue = rawValue.replace(",", "");
-            }
-            // "232,42" -> "232.42" (європейський формат)
-            else if (rawValue.contains(",")) {
+
+                if (rawValue.indexOf(".") < rawValue.indexOf(",")) {
+                    rawValue = rawValue.replace(".", "").replace(",", ".");
+                } else {
+                    rawValue = rawValue.replace(",", "");
+                }
+            } else if (rawValue.contains(",")) {
                 rawValue = rawValue.replace(",", ".");
             }
             BigDecimal bd = new BigDecimal(rawValue);
