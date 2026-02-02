@@ -65,6 +65,9 @@ public class InvoiceParserService {
 
         // 5. Парсимо Price (останній токен перед слешем)
         String priceStr = dto.getTextPrice();
+        if (priceStr != null && priceStr.contains("/")) {
+            priceStr = priceStr.substring(0, priceStr.indexOf("/")).trim();
+        }
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
         BigDecimal quantity = null;
