@@ -64,9 +64,35 @@ public class InvoiceParserService {
         Integer lineNumber = Integer.parseInt(tokens[0]);
 
         String priceStr = dto.getTextPrice();
-        if (priceStr != null && priceStr.contains("/")) {
-            priceStr = priceStr.substring(0, priceStr.indexOf("/")).trim();
+
+        if (priceStr == null) {
+            // Шукаємо в токенах (логіка з попередніх кроків)
+            for (int i = tokens.length - 1; i >= 0; i--) {
+                BigDecimal possible = normalizePrice(tokens[i]);
+                if (possible != null) {
+                    priceStr = tokens[i];
+                    break;
+                }
+            }
         }
+
+        if (priceStr != null) {
+            // 1. Відрізаємо все після слеша ("197,11 EUR/100 KG" -> "197,11 EUR")
+            if (priceStr.contains("/")) {
+                priceStr = priceStr.substring(0, priceStr.indexOf("/")).trim();
+            }
+
+            // 2. Відрізаємо валюту (беремо перше слово до пробілу)
+            // "197,11 EUR" -> "197,11"
+            String[] priceTokens = priceStr.split("\\s+");
+            if (priceTokens.length > 0) {
+                // Перевіряємо, чи перший токен схожий на число (містить цифри)
+                if (priceTokens[0].matches(".*\\d.*")) {
+                    priceStr = priceTokens[0];
+                }
+            }
+        }
+
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
         BigDecimal quantity = null;
