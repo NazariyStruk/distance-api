@@ -64,7 +64,7 @@ public class InvoiceParserService {
         Integer lineNumber = Integer.parseInt(tokens[0]);
 
         // 5. Парсимо Price (останній токен перед слешем)
-        String priceStr = tokens[tokens.length - 1];
+        String priceStr = dto.getTextPrice();
         BigDecimal price = normalizePrice(priceStr);
         String extractedArticul = extractArticul(descr);
         BigDecimal quantity = null;
@@ -91,8 +91,10 @@ public class InvoiceParserService {
         BigDecimal totalAmount = normalizePrice(dto.getAmount());
 
 
-        if (descr.contains("/ 100")) {
-            unitPriceValue = "100";
+        if (descr.contains("/ 100 KG") || descr.contains("/100 KG")) {
+            unitPriceValue = "100 KG";
+        } else if (descr.contains("/100 L") || descr.contains("/ 100 L")) {
+            unitPriceValue = "100 L";
         }
 
         // 6. Створюємо та зберігаємо об'єкт

@@ -10,4 +10,5 @@ public class InvoiceRequestDto {
     private String vendorTaxId;
     private LocalDate date;
     private String amount;
+    private String textPrice;
 }
