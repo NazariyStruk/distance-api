@@ -94,6 +94,9 @@ public class InvoiceParserService {
         }
 
         BigDecimal price = normalizePrice(priceStr);
+        if (price == null) {
+            price = extractPriceFromDescriptionFallback(descr);
+        }
         String extractedArticul = extractArticul(descr);
         BigDecimal quantity = null;
         String units = null;
@@ -157,6 +160,31 @@ public class InvoiceParserService {
         item.setUpdatedBy1c(true);
         item.setWeight(weight);
         repository.save(item);
+    }
+
+    private BigDecimal extractPriceFromDescriptionFallback(String descr) {
+        int index = -1;
+
+        // Шукаємо якорі в порядку пріоритету
+        if (descr.contains("EUR/100")) {
+            index = descr.indexOf("EUR/100"); // Для польських "... 179,49 EUR/100 KG"
+        } else if (descr.contains("/ 100")) {
+            index = descr.indexOf("/ 100");  // Для німецьких "... 507.92 / 100 KG"
+        } else if (descr.contains("/100")) {
+            index = descr.indexOf("/100");    // Загальний фолбек
+        }
+
+        if (index != -1) {
+            // Беремо текст ДО якоря: "... 360,00 L 179,49 "
+            String textBeforeAnchor = descr.substring(0, index).trim();
+            // Розбиваємо по пробілах і беремо ОСТАННЄ слово
+            String[] tokens = textBeforeAnchor.split("\\s+");
+            if (tokens.length > 0) {
+                String potentialPrice = tokens[tokens.length - 1];
+                return normalizePrice(potentialPrice);
+            }
+        }
+        return null;
     }
 
     // Спеціальний метод для пошуку ваги в польських інвойсах
