@@ -11,4 +11,5 @@ public class InvoiceRequestDto {
     private LocalDate date;
     private String amount;
     private String textPrice;
+    private String weightPL;
 }

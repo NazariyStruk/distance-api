@@ -133,6 +133,9 @@ public class InvoiceParserService {
 
         if (!isGerman) {
             weight = extractPolishWeight(descr);
+            if (weight == null) {
+                weight = processWeight(dto.getWeightPL());
+            }
         }
 
         BigDecimal totalAmount = normalizePrice(dto.getAmount());
@@ -208,6 +211,35 @@ public class InvoiceParserService {
             // Якщо щось пішло не так, повертаємо null
         }
         return null;
+    }
+
+    private BigDecimal processWeight(String rawWeight) {
+        if (rawWeight == null) return null;
+        try {
+            // Крок 1: Видаляємо все, крім цифр, крапок та ком
+            // "2.843,840 KG" -> "2.843,840"
+            // "17,960 KG" -> "17,960"
+            String cleaned = rawWeight.replaceAll("[^0-9,.]", "");
+
+            // Крок 2: Нормалізація роздільників (Європа -> Java)
+            if (cleaned.contains(".") && cleaned.contains(",")) {
+                // Випадок "2.843,840": видаляємо крапку (тисячі), міняємо кому на крапку
+                cleaned = cleaned.replace(".", "").replace(",", ".");
+            } else if (cleaned.contains(",")) {
+                // Випадок "519,000": міняємо кому на крапку
+                cleaned = cleaned.replace(",", ".");
+            }
+
+            // Крок 3: Створення BigDecimal
+            BigDecimal bd = new BigDecimal(cleaned);
+
+            // Крок 4: Встановлюємо 2 знаки після коми (округлення HALF_UP)
+            return bd.setScale(2, RoundingMode.HALF_UP);
+
+        } catch (Exception e) {
+            System.err.println("Failed to parse weight: " + rawWeight);
+            return null;
+        }
     }
 
     private BigDecimal parseQuantity(String rawQuantity) {
