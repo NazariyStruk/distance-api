@@ -122,6 +122,14 @@ public class InvoiceParserService {
                         quantity = parseQuantity(rawQuantity);
                         if (isGerman && i + 3 < allTokens.length) {
                             String rawWeight = allTokens[i + 3];
+
+                            if (rawWeight != null && rawWeight.matches("\\d{1,3},\\d{3}")) {
+                                if (descr.contains(".")) {
+                                    // Якщо контекст рядка англійський (є крапки), то кома в "1,688" — це тисячі.
+                                    // Просто видаляємо її.
+                                    rawWeight = rawWeight.replace(",", ""); // Стає "1688"
+                                }
+                            }
                             // Перевіряємо, чи це число, бо іноді може бути текст
                             weight = normalizePrice(rawWeight);
                         }
