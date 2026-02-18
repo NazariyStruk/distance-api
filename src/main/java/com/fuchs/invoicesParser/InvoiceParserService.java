@@ -45,7 +45,7 @@ public class InvoiceParserService {
 
         // 1. Перевірка на валідність
         if (descr == null || !descr.contains("/")) {
-            throw new IllegalArgumentException("Invalid format: '/' not found in description");
+            return;
         }
 
         // 2. Витягуємо частину рядка ДО символу "/"
