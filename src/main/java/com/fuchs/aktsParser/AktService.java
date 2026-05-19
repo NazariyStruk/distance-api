@@ -29,13 +29,6 @@ public class AktService {
     @Transactional
     public void saveAkt(AktDto dto) {
 
-        // ЗАХИСТ ВІД ДУБЛІКАТІВ
-        if (isDuplicate(dto)) {
-            // Тут можна кинути кастомний RuntimeException,
-            // який контролер перехопить і поверне 409 Conflict
-            throw new DuplicateDocumentException("Документ з такими даними вже існує!");
-        }
-
         AktEntity actEntity = new AktEntity();
         actEntity.setNumberDoc(dto.getNumberDoc());
         actEntity.setTypeDoc(dto.getTypeDoc());
@@ -71,6 +64,12 @@ public class AktService {
 
                 actEntity.addItem(itemEntity);
             }
+        }
+
+        if (isDuplicate(actEntity)) {
+            // Тут можна кинути кастомний RuntimeException,
+            // який контролер перехопить і поверне 409 Conflict
+            throw new DuplicateDocumentException("Документ з такими даними вже існує!");
         }
 
         aktRepository.save(actEntity);
@@ -183,17 +182,17 @@ public class AktService {
     }
 
     @Transactional(readOnly = true)
-    public boolean isDuplicate(AktDto dto) {
+    public boolean isDuplicate(AktEntity aktEntity) {
         Optional<AktEntity> duplicate = Optional.empty();
 
-        if (dto.getCodeSupplier() != null && !dto.getCodeSupplier().isBlank()) {
+        if (aktEntity.getCodeSupplier() != null && !aktEntity.getCodeSupplier().isBlank()) {
             // Шукаємо за ЄДРПОУ
             duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
-                    dto.getDateDoc(), dto.getCodeSupplier(), dto.getNumberDoc());
-        } else if (dto.getIpnSupplier() != null && !dto.getIpnSupplier().isBlank()) {
+                    aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), aktEntity.getNumberDoc());
+        } else if (aktEntity.getIpnSupplier() != null && !aktEntity.getIpnSupplier().isBlank()) {
             // Шукаємо за ІПН, якщо коду немає
             duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
-                    dto.getDateDoc(), dto.getIpnSupplier(), dto.getNumberDoc());
+                    aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), aktEntity.getNumberDoc());
         }
 
         return duplicate.isPresent();
