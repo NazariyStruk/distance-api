@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class AktService {
@@ -27,6 +28,14 @@ public class AktService {
 
     @Transactional
     public void saveAkt(AktDto dto) {
+
+        // ЗАХИСТ ВІД ДУБЛІКАТІВ
+        if (isDuplicate(dto)) {
+            // Тут можна кинути кастомний RuntimeException,
+            // який контролер перехопить і поверне 409 Conflict
+            throw new DuplicateDocumentException("Документ з такими даними вже існує!");
+        }
+
         AktEntity actEntity = new AktEntity();
         actEntity.setNumberDoc(dto.getNumberDoc());
         actEntity.setTypeDoc(dto.getTypeDoc());
@@ -171,5 +180,22 @@ public class AktService {
             // Логування помилки
             return null;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isDuplicate(AktDto dto) {
+        Optional<AktEntity> duplicate = Optional.empty();
+
+        if (dto.getCodeSupplier() != null && !dto.getCodeSupplier().isBlank()) {
+            // Шукаємо за ЄДРПОУ
+            duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
+                    dto.getDateDoc(), dto.getCodeSupplier(), dto.getNumberDoc());
+        } else if (dto.getIpnSupplier() != null && !dto.getIpnSupplier().isBlank()) {
+            // Шукаємо за ІПН, якщо коду немає
+            duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
+                    dto.getDateDoc(), dto.getIpnSupplier(), dto.getNumberDoc());
+        }
+
+        return duplicate.isPresent();
     }
 }
