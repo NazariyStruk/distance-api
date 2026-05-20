@@ -15,6 +15,7 @@ public class AktDto {
     private String amountDoc;
     private String taxDoc;
     private String includeTax;
+    private String fileName;
     private List<AktItemDto> items;
 
 }

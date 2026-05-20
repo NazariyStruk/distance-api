@@ -30,7 +30,7 @@ public class AktService {
     public void saveAkt(AktDto dto) {
 
         AktEntity actEntity = new AktEntity();
-        actEntity.setNumberDoc(dto.getNumberDoc());
+        actEntity.setNumberDoc(normalizeNumber(dto.getNumberDoc()));
         actEntity.setTypeDoc(dto.getTypeDoc());
         actEntity.setNameSupplier(dto.getNameSupplier());
         actEntity.setCodeSupplier(normalizeCodeSupplierOrIpnSupplier(dto.getCodeSupplier()));
@@ -48,6 +48,7 @@ public class AktService {
         // 2. Очищення грошових сум
         actEntity.setAmountDoc(parseBigDecimal(dto.getAmountDoc()));
         actEntity.setTaxDoc(parseBigDecimal(dto.getTaxDoc()));
+        actEntity.setFileName(dto.getFileName());
 
         // 3. Обробка позицій акту (items)
         if (dto.getItems() != null) {
@@ -196,5 +197,13 @@ public class AktService {
         }
 
         return duplicate.isPresent();
+    }
+
+    private String normalizeNumber(String rawNumber) {
+        if (rawNumber == null || rawNumber.isBlank()) {
+            return null;
+        }
+        // Видаляємо все, що не є цифрою (букви, пробіли, коми, крапки, символи "від" тощо)
+        return rawNumber.replaceAll("\\D+", "");
     }
 }

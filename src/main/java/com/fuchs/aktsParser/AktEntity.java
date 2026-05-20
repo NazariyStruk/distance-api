@@ -24,6 +24,8 @@ public class AktEntity {
     private BigDecimal amountDoc;
     private BigDecimal taxDoc;
     private String includeTax;
+    @Column(name = "file_name")
+    private String fileName;
 
     @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AktItemEntity> items = new ArrayList<>();
