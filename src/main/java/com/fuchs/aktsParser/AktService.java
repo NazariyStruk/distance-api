@@ -49,6 +49,7 @@ public class AktService {
         actEntity.setAmountDoc(parseBigDecimal(dto.getAmountDoc()));
         actEntity.setTaxDoc(parseBigDecimal(dto.getTaxDoc()));
         actEntity.setFileName(dto.getFileName());
+        actEntity.setUploadedTo1C(false);
 
         // 3. Обробка позицій акту (items)
         if (dto.getItems() != null) {

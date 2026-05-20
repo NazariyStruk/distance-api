@@ -26,6 +26,8 @@ public class AktEntity {
     private String includeTax;
     @Column(name = "file_name")
     private String fileName;
+    @Column(name = "uploaded_to_1c")
+    private boolean uploadedTo1C;
 
     @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AktItemEntity> items = new ArrayList<>();

@@ -1,0 +1,1 @@
+ALTER TABLE acts ADD uploaded_to_1c BIT DEFAULT 0;
