@@ -19,3 +19,5 @@ databaseChangeLog:
       file: db/changelog/changes/009-alter-table.sql
   - include:
       file: db/changelog/changes/010-alter-table.sql
+  - include:
+      file: db/changelog/changes/011-alter-table.sql
