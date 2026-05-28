@@ -46,6 +46,7 @@ public class NakladnaProcessingService {
         }
 
         nakladna.setTotalAmount(parseBigDecimal(dto.getTotalAmount()));
+        nakladna.setFileName(dto.getFileName());
         nakladna.setUploadedTo1C(false);
 
         // Перевірка на дублікати перед обробкою товарів

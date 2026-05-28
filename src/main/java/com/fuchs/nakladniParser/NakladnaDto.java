@@ -27,6 +27,7 @@ public class NakladnaDto {
     @JsonProperty("TotalAmount")
     private String totalAmount;
 
+    @JsonProperty("fileName")
     private String fileName;
 
     @JsonProperty("Products")
