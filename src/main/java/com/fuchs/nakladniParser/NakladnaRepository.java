@@ -13,4 +13,7 @@ public interface NakladnaRepository extends JpaRepository<NakladnaEntity, Long> 
 
     // Пошук за датою, ІПН та номером
     Optional<NakladnaEntity> findByInvoiceDateAndVendorIpnAndInvoiceId(String invoiceDate, String vendorIpn, String invoiceId);
+
+    // НОВИЙ МЕТОД: Фолбек-пошук за назвою, якщо коди відсутні
+    Optional<NakladnaEntity> findByInvoiceDateAndInvoiceIdAndVendorName(String invoiceDate, String invoiceId, String vendorName);
 }

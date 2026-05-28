@@ -79,11 +79,20 @@ public class NakladnaProcessingService {
         Optional<NakladnaEntity> duplicate = Optional.empty();
 
         if (nakladna.getVendorEdrpou() != null && !nakladna.getVendorEdrpou().isBlank()) {
+            // 1. Перевірка за ЄДРПОУ
             duplicate = nakladnaRepository.findByInvoiceDateAndVendorEdrpouAndInvoiceId(
                     nakladna.getInvoiceDate(), nakladna.getVendorEdrpou(), nakladna.getInvoiceId());
+
         } else if (nakladna.getVendorIpn() != null && !nakladna.getVendorIpn().isBlank()) {
+            // 2. Перевірка за ІПН (якщо немає ЄДРПОУ)
             duplicate = nakladnaRepository.findByInvoiceDateAndVendorIpnAndInvoiceId(
                     nakladna.getInvoiceDate(), nakladna.getVendorIpn(), nakladna.getInvoiceId());
+
+        } else {
+            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
+            // Запобігає дублюванню документів без розпізнаних кодів компанії
+            duplicate = nakladnaRepository.findByInvoiceDateAndInvoiceIdAndVendorName(
+                    nakladna.getInvoiceDate(), nakladna.getInvoiceId(), nakladna.getVendorName());
         }
 
         return duplicate.isPresent();
