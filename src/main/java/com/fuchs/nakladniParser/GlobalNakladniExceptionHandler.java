@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalNakladniExceptionHandler {
 
     @ExceptionHandler(DuplicateNakladnaException.class)
     public ResponseEntity<String> handleDuplicate(DuplicateNakladnaException ex) {
