@@ -1,10 +1,13 @@
 package com.fuchs.nakladniParser;
 
-import lombok.RequiredArgsConstructor;
+import com.fuchs.aktsParser.AktEntity;
+import com.fuchs.aktsParser.AktItemEntity;
+import com.fuchs.aktsParser.AktRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -12,10 +15,10 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class NakladnaProcessingService {
 
-    private final NakladnaRepository nakladnaRepository;
+    // ВИКОРИСТОВУЄМО РЕПОЗИТОРІЙ АКТІВ!
+    private final AktRepository aktRepository;
 
     private static final Map<String, Integer> UKR_MONTHS = Map.ofEntries(
             Map.entry("січня", 1), Map.entry("лютого", 2), Map.entry("березня", 3),
@@ -24,96 +27,124 @@ public class NakladnaProcessingService {
             Map.entry("жовтня", 10), Map.entry("листопада", 11), Map.entry("грудня", 12)
     );
 
+    public NakladnaProcessingService(AktRepository aktRepository) {
+        this.aktRepository = aktRepository;
+    }
+
     @Transactional
     public void processAndSaveNakladna(NakladnaDto dto) {
-        NakladnaEntity nakladna = new NakladnaEntity();
+        // СТВОРЮЄМО СУТНІСТЬ АКТУ
+        AktEntity aktEntity = new AktEntity();
 
-        nakladna.setDocumentType(dto.getDocumentType() != null ? dto.getDocumentType().replace("\n", " ").trim() : null);
+        // Мапимо поля Накладної -> на поля Акту
+        aktEntity.setTypeDoc(dto.getDocumentType() != null ? dto.getDocumentType().replace("\n", " ").trim() : "Накладна");
+        aktEntity.setNumberDoc(normalizeNumber(dto.getInvoiceId()));
+        aktEntity.setNameSupplier(dto.getVendorName() != null ? dto.getVendorName().replace("\n", " ").trim() : null);
+        aktEntity.setIncludeTax(dto.getIncludeTax());
 
-        // Зберігаємо номер як є (щоб не втратити префікси типу Рнк/LV)
-        nakladna.setInvoiceId(dto.getInvoiceId() != null ? dto.getInvoiceId().trim() : null);
-
-        nakladna.setVendorName(dto.getVendorName() != null ? dto.getVendorName().replace("\n", " ").trim() : null);
-        nakladna.setVendorEdrpou(normalizeVendorCode(dto.getVendorEdrpou()));
-        nakladna.setVendorIpn(normalizeVendorCode(dto.getVendorIpn()));
+        aktEntity.setCodeSupplier(normalizeVendorCode(dto.getVendorEdrpou()));
+        aktEntity.setIpnSupplier(normalizeVendorCode(dto.getVendorIpn()));
 
         // Нормалізація дати
         LocalDate parsedDate = normalizeDate(dto.getInvoiceDate());
         if (parsedDate != null) {
-            nakladna.setInvoiceDate(parsedDate.toString()); // YYYY-MM-DD
+            aktEntity.setDateDoc(parsedDate.toString()); // YYYY-MM-DD
         } else {
-            nakladna.setInvoiceDate(dto.getInvoiceDate()); // Зберігаємо як є, якщо парсинг не вдався
+            aktEntity.setDateDoc(dto.getInvoiceDate());
         }
 
-        nakladna.setTotalAmount(parseBigDecimal(dto.getTotalAmount()));
-        nakladna.setFileName(dto.getFileName());
-        nakladna.setUploadedTo1C(false);
+        // Парсинг сум з вирішеною проблемою "грн."
+        aktEntity.setAmountDoc(parseBigDecimal(dto.getTotalAmount()));
+        aktEntity.setTaxDoc(parseBigDecimal(dto.getInvoiceTotalTax()));
+        aktEntity.setFileName(dto.getFileName());
+        aktEntity.setUploadedTo1C(false);
 
-        // Перевірка на дублікати перед обробкою товарів
-        if (isDuplicate(nakladna)) {
-            throw new DuplicateNakladnaException("Видаткова накладна з такими даними вже існує!");
+        // Перевірка на дублікати в таблиці актів
+        if (isDuplicate(aktEntity)) {
+            // Можете використовувати свій Exception
+            throw new RuntimeException("Документ з такими даними вже існує у базі!");
         }
 
-        // Обробка позицій
+        // Обробка позицій (мапимо на AktItemEntity)
         if (dto.getProducts() != null) {
             dto.getProducts().forEach(productDto -> {
-                NakladnaItemEntity item = new NakladnaItemEntity();
+                AktItemEntity item = new AktItemEntity();
                 item.setDescription(productDto.getDescription() != null ? productDto.getDescription().replace("\n", " ").trim() : null);
 
-                // Quantity та Amount приходять вже як BigDecimal завдяки нашому DTO та Jackson
-                item.setQuantity(productDto.getQuantity());
+                // Оскільки Jackson вже конвертує quantity/amount у BigDecimal (якщо вони приходять числами)
+                item.setQuantity(productDto.getQuantity().intValue());
                 item.setAmount(productDto.getAmount());
 
-                item.setUnit(productDto.getUnit() != null ? productDto.getUnit().replace("|", "").trim() : null);
-                item.setUnitPrice(parseBigDecimal(productDto.getUnitPrice()));
+                item.setUnits(productDto.getUnit() != null ? productDto.getUnit().replace("|", "").trim() : null);
 
-                nakladna.addItem(item);
+                // Ціна часто приходить як рядок "14,52"
+                item.setPrice(parseBigDecimal(productDto.getUnitPrice()));
+
+                aktEntity.addItem(item);
             });
         }
 
-        nakladnaRepository.save(nakladna);
+        // Зберігаємо в загальну таблицю
+        aktRepository.save(aktEntity);
     }
 
-    @Transactional(readOnly = true)
-    public boolean isDuplicate(NakladnaEntity nakladna) {
-        Optional<NakladnaEntity> duplicate = Optional.empty();
-
-        if (nakladna.getVendorEdrpou() != null && !nakladna.getVendorEdrpou().isBlank()) {
-            // 1. Перевірка за ЄДРПОУ
-            duplicate = nakladnaRepository.findByInvoiceDateAndVendorEdrpouAndInvoiceId(
-                    nakladna.getInvoiceDate(), nakladna.getVendorEdrpou(), nakladna.getInvoiceId());
-
-        } else if (nakladna.getVendorIpn() != null && !nakladna.getVendorIpn().isBlank()) {
-            // 2. Перевірка за ІПН (якщо немає ЄДРПОУ)
-            duplicate = nakladnaRepository.findByInvoiceDateAndVendorIpnAndInvoiceId(
-                    nakladna.getInvoiceDate(), nakladna.getVendorIpn(), nakladna.getInvoiceId());
-
-        } else {
-            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
-            // Запобігає дублюванню документів без розпізнаних кодів компанії
-            duplicate = nakladnaRepository.findByInvoiceDateAndInvoiceIdAndVendorName(
-                    nakladna.getInvoiceDate(), nakladna.getInvoiceId(), nakladna.getVendorName());
-        }
-
-        return duplicate.isPresent();
-    }
-
-    private LocalDate normalizeDate(String rawDate) {
-        if (rawDate == null || rawDate.isBlank()) {
+    // --- НАДІЙНИЙ ПАРСИНГ СУМ (ФІКС ПРОБЛЕМИ З ГРН) ---
+    private BigDecimal parseBigDecimal(String rawAmount) {
+        if (rawAmount == null || rawAmount.isBlank()) {
             return null;
         }
 
-        String cleanDate = rawDate.trim()
-                .toLowerCase()
-                .replaceAll("р\\.?\\s*$", "")
-                .trim();
+        // 1. Очищення від розділювачів тисяч та артефактів OCR
+        String cleanAmount = rawAmount
+                .replace(" ", "")
+                .replace("\u00a0", "")
+                .replace("'", "")
+                .replace("\\", "")
+                .replace("`", "");
+
+        // 2. Заміна десяткової коми на крапку
+        cleanAmount = cleanAmount.replace(",", ".");
+
+        // 3. Видаляємо всі літери (грн, uah, літери з назв тощо)
+        cleanAmount = cleanAmount.replaceAll("[а-яА-Яa-zA-ZіІїЇєЄґҐ]+", "");
+
+        // 4. Якщо в кінці залишилася крапка від скорочення "грн.", видаляємо її
+        cleanAmount = cleanAmount.replaceAll("\\.+$", "");
+
+        if (cleanAmount.isBlank()) {
+            return null;
+        }
+
+        try {
+            return new BigDecimal(cleanAmount).setScale(2, RoundingMode.HALF_UP);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private String normalizeNumber(String rawNumber) {
+        if (rawNumber == null || rawNumber.isBlank()) {
+            return "";
+        }
+        // Залишаємо букви, цифри, дефіси та косі риски (щоб не втратити префікси Рнк/LV)
+        return rawNumber.replaceAll("(?i)(№|від|номер|акт|документ|накладна|\\s)", "").trim();
+    }
+
+    private String normalizeVendorCode(String rawCode) {
+        if (rawCode == null || rawCode.isBlank()) return null;
+        // Відрізає приставку "ИНН:" і залишає лише цифри
+        String cleanCode = rawCode.replaceAll("\\D+", "");
+        return cleanCode.isEmpty() ? null : cleanCode;
+    }
+
+    private LocalDate normalizeDate(String rawDate) {
+        if (rawDate == null || rawDate.isBlank()) return null;
+
+        String cleanDate = rawDate.trim().toLowerCase().replaceAll("р\\.?\\s*$", "").trim();
 
         if (cleanDate.matches("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$")) {
-            try {
-                return LocalDate.parse(cleanDate, DateTimeFormatter.ofPattern("d.M.yyyy"));
-            } catch (DateTimeParseException e) {
-                return null;
-            }
+            try { return LocalDate.parse(cleanDate, DateTimeFormatter.ofPattern("d.M.yyyy")); }
+            catch (DateTimeParseException e) { return null; }
         }
 
         String[] parts = cleanDate.split("\\s+");
@@ -122,10 +153,7 @@ public class NakladnaProcessingService {
                 int day = Integer.parseInt(parts[0]);
                 Integer month = UKR_MONTHS.get(parts[1]);
                 int year = Integer.parseInt(parts[2]);
-
-                if (month != null) {
-                    return LocalDate.of(year, month, day);
-                }
+                if (month != null) return LocalDate.of(year, month, day);
             } catch (NumberFormatException | java.time.DateTimeException e) {
                 return null;
             }
@@ -133,31 +161,26 @@ public class NakladnaProcessingService {
         return null;
     }
 
-    private BigDecimal parseBigDecimal(String rawAmount) {
-        if (rawAmount == null || rawAmount.isBlank()) {
-            return null;
+    @Transactional(readOnly = true)
+    public boolean isDuplicate(AktEntity aktEntity) {
+        Optional<AktEntity> duplicate;
+
+        String num = aktEntity.getNumberDoc() != null ? aktEntity.getNumberDoc() : "";
+
+        if (aktEntity.getCodeSupplier() != null && !aktEntity.getCodeSupplier().isBlank()) {
+            duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
+                    aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), num);
+        } else if (aktEntity.getIpnSupplier() != null && !aktEntity.getIpnSupplier().isBlank()) {
+            duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
+                    aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), num);
+        } else {
+            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
+            // Запобігає дублюванню документів без розпізнаних кодів компанії
+            duplicate = aktRepository.findByDateDocAndNumberDocAndNameSupplier(aktEntity.getDateDoc(), num,  aktEntity.getNameSupplier());
+
         }
 
-        String cleanAmount = rawAmount
-                .replace(" ", "")
-                .replace("\u00a0", "")
-                .replace("'", "")
-                .replace("\\", "")
-                .replace("`", "")
-                .replace(",", ".");
-
-        try {
-            return new BigDecimal(cleanAmount);
-        } catch (NumberFormatException e) {
-            return null;
-        }
+        return duplicate.isPresent();
     }
 
-    private String normalizeVendorCode(String rawCode) {
-        if (rawCode == null || rawCode.isBlank()) {
-            return null;
-        }
-        String cleanCode = rawCode.replaceAll("\\D+", "");
-        return cleanCode.isEmpty() ? null : cleanCode;
-    }
 }

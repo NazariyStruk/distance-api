@@ -30,6 +30,12 @@ public class NakladnaDto {
     @JsonProperty("fileName")
     private String fileName;
 
+    @JsonProperty("InvoiceTotalTax")
+    private String InvoiceTotalTax;
+
+    @JsonProperty("IncludeTax")
+    private String IncludeTax;
+
     @JsonProperty("Products")
     private List<NakladnaItemDto> products;
 }

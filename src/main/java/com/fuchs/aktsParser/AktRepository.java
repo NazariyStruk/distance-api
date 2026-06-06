@@ -12,4 +12,8 @@ public interface AktRepository extends JpaRepository<AktEntity, Long> {
 
     // 2. Пошук, якщо коду немає, а є ІПН
     Optional<AktEntity> findByDateDocAndIpnSupplierAndNumberDoc(String dateDoc, String ipnSupplier, String numberDoc);
+
+    // НОВИЙ МЕТОД: Фолбек-пошук за назвою, якщо коди відсутні
+    Optional<AktEntity> findByDateDocAndNumberDocAndNameSupplier (String dateDoc, String numberDoc, String nameSupplier);
+
 }

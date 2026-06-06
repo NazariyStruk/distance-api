@@ -195,16 +195,21 @@ public class AktService {
 
     @Transactional(readOnly = true)
     public boolean isDuplicate(AktEntity aktEntity) {
-        Optional<AktEntity> duplicate = Optional.empty();
+        Optional<AktEntity> duplicate;
+
+        String num = aktEntity.getNumberDoc() != null ? aktEntity.getNumberDoc() : "";
 
         if (aktEntity.getCodeSupplier() != null && !aktEntity.getCodeSupplier().isBlank()) {
-            // Шукаємо за ЄДРПОУ
             duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
-                    aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), aktEntity.getNumberDoc());
+                    aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), num);
         } else if (aktEntity.getIpnSupplier() != null && !aktEntity.getIpnSupplier().isBlank()) {
-            // Шукаємо за ІПН, якщо коду немає
             duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
-                    aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), aktEntity.getNumberDoc());
+                    aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), num);
+        } else {
+            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
+            // Запобігає дублюванню документів без розпізнаних кодів компанії
+            duplicate = aktRepository.findByDateDocAndNumberDocAndNameSupplier(aktEntity.getDateDoc(), num,  aktEntity.getNameSupplier());
+
         }
 
         return duplicate.isPresent();
