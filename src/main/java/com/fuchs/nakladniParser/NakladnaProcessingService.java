@@ -140,13 +140,23 @@ public class NakladnaProcessingService {
     private LocalDate normalizeDate(String rawDate) {
         if (rawDate == null || rawDate.isBlank()) return null;
 
-        String cleanDate = rawDate.trim().toLowerCase().replaceAll("р\\.?\\s*$", "").trim();
+        // 1. Замінюємо нижні підкреслення на пробіли (OCR часто так розпізнає зсуви тексту)
+        // 2. Видаляємо всі можливі лапки (включно з подвійними " та одинарними ')
+        // 3. Переводимо в нижній регістр і відрізаємо "р." в кінці
+        String cleanDate = rawDate.trim()
+                .replace("_", " ")
+                .replaceAll("[«»\"'“”]", "")
+                .toLowerCase()
+                .replaceAll("р\\.?\\s*$", "")
+                .trim();
 
         if (cleanDate.matches("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}$")) {
             try { return LocalDate.parse(cleanDate, DateTimeFormatter.ofPattern("d.M.yyyy")); }
             catch (DateTimeParseException e) { return null; }
         }
 
+        // Для текстових дат кілька пробілів підряд (напр. "16    червня")
+        // безпечно зіжмуться в один завдяки \\s+
         String[] parts = cleanDate.split("\\s+");
         if (parts.length == 3) {
             try {
