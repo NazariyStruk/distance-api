@@ -40,9 +40,10 @@ public class AktService {
         // 1. Нормалізація дати
         LocalDate parsedDate = normalizeDate(dto.getDateDoc());
         if (parsedDate != null) {
-            actEntity.setDateDoc(parsedDate.toString()); // Збереже у форматі YYYY-MM-DD
+            actEntity.setDateDoc(parsedDate.toString()); // Збереже розпарсену дату у форматі YYYY-MM-DD
         } else {
-            actEntity.setDateDoc(dto.getDateDoc()); // Збереже як є, якщо парсинг не вдався
+            // Якщо дата невалідна або OCR видав повне сміття — сетаємо поточну дату
+            actEntity.setDateDoc(LocalDate.now().toString());
         }
 
         // 2. Очищення грошових сум
@@ -86,9 +87,10 @@ public class AktService {
         // 2. Видаляємо всі можливі лапки (« », " ", ' ', “ ”)
         // 3. Переводимо в нижній регістр
         String cleanDate = rawDate.trim()
+                .replace("_", " ")
                 .toLowerCase()
                 .replaceAll("р\\.?\\s*$", "")
-                .replaceAll("[«»\"'“”]", "") // <-- Цей рядок прибирає лапки з дати
+                .replaceAll("[«»\"'“”]", "")
                 .trim();
 
         // Перевірка числового формату (напр., "16.04.2026", "6.4.2026")

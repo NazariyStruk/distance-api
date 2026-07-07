@@ -45,12 +45,13 @@ public class NakladnaProcessingService {
         aktEntity.setCodeSupplier(normalizeVendorCode(dto.getVendorEdrpou()));
         aktEntity.setIpnSupplier(normalizeVendorCode(dto.getVendorIpn()));
 
-        // Нормалізація дати
+        // 1. Нормалізація дати
         LocalDate parsedDate = normalizeDate(dto.getInvoiceDate());
         if (parsedDate != null) {
-            aktEntity.setDateDoc(parsedDate.toString()); // YYYY-MM-DD
+            aktEntity.setDateDoc(parsedDate.toString()); // Збереже розпарсену дату у форматі YYYY-MM-DD
         } else {
-            aktEntity.setDateDoc(dto.getInvoiceDate());
+            // Якщо дата невалідна або OCR видав повне сміття — сетаємо поточну дату
+            aktEntity.setDateDoc(LocalDate.now().toString());
         }
 
         // Парсинг сум з вирішеною проблемою "грн."
