@@ -26,8 +26,11 @@ public class AktService {
         this.aktRepository = aktRepository;
     }
 
+    /**
+     * @return true, якщо існуючий документ був оновлений (upsert), false — якщо створено новий
+     */
     @Transactional
-    public void saveAkt(AktDto dto) {
+    public boolean saveAkt(AktDto dto) {
 
         AktEntity actEntity = new AktEntity();
         actEntity.setNumberDoc(normalizeNumber(dto.getNumberDoc()));
@@ -69,13 +72,41 @@ public class AktService {
             }
         }
 
-        if (isDuplicate(actEntity)) {
-            // Тут можна кинути кастомний RuntimeException,
-            // який контролер перехопить і поверне 409 Conflict
-            throw new DuplicateDocumentException("Документ з такими даними вже існує!");
+        Optional<AktEntity> existing = findDuplicate(actEntity);
+        if (existing.isPresent()) {
+            // Документ з такими ключами вже є в БД — оновлюємо його новими даними
+            // замість того, щоб відхиляти завантаження (напр. коли раніше ipn/numberDoc
+            // не розпізнались і були null, а тепер прийшли коректні дані)
+            AktEntity target = existing.get();
+            updateEntity(target, actEntity);
+            aktRepository.save(target);
+            return true;
         }
 
         aktRepository.save(actEntity);
+        return false;
+    }
+
+    /**
+     * Повністю переносить дані з щойно розпарсеного документа (source) в існуючий запис (target).
+     */
+    private void updateEntity(AktEntity target, AktEntity source) {
+        target.setNumberDoc(source.getNumberDoc());
+        target.setTypeDoc(source.getTypeDoc());
+        target.setNameSupplier(source.getNameSupplier());
+        target.setCodeSupplier(source.getCodeSupplier());
+        target.setIpnSupplier(source.getIpnSupplier());
+        target.setIncludeTax(source.getIncludeTax());
+        target.setDateDoc(source.getDateDoc());
+        target.setAmountDoc(source.getAmountDoc());
+        target.setTaxDoc(source.getTaxDoc());
+        target.setFileName(source.getFileName());
+        target.setUploadedTo1C(false); // дані змінились — потрібен повторний вигруз в 1С
+
+        target.getItems().clear();
+        for (AktItemEntity item : source.getItems()) {
+            target.addItem(item);
+        }
     }
 
     private LocalDate normalizeDate(String rawDate) {
@@ -201,25 +232,21 @@ public class AktService {
     }
 
     @Transactional(readOnly = true)
-    public boolean isDuplicate(AktEntity aktEntity) {
-        Optional<AktEntity> duplicate;
-
+    public Optional<AktEntity> findDuplicate(AktEntity aktEntity) {
         String num = aktEntity.getNumberDoc() != null ? aktEntity.getNumberDoc() : "";
 
         if (aktEntity.getCodeSupplier() != null && !aktEntity.getCodeSupplier().isBlank()) {
-            duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
+            return aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
                     aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), num);
         } else if (aktEntity.getIpnSupplier() != null && !aktEntity.getIpnSupplier().isBlank()) {
-            duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
+            return aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
                     aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), num);
         } else {
-            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
+            // ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
             // Запобігає дублюванню документів без розпізнаних кодів компанії
-            duplicate = aktRepository.findByDateDocAndNumberDocAndNameSupplier(aktEntity.getDateDoc(), num,  aktEntity.getNameSupplier());
-
+            return aktRepository.findByDateDocAndNumberDocAndNameSupplier(
+                    aktEntity.getDateDoc(), num, aktEntity.getNameSupplier());
         }
-
-        return duplicate.isPresent();
     }
 
     private String normalizeNumber(String rawNumber) {

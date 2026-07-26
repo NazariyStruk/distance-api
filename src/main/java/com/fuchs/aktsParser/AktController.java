@@ -17,7 +17,10 @@ public class AktController {
     @PostMapping
     public ResponseEntity<String> createAkt(@RequestBody AktDto dto) {
         try {
-            aktService.saveAkt(dto);
+            boolean updated = aktService.saveAkt(dto);
+            if (updated) {
+                return ResponseEntity.status(HttpStatus.OK).body("Акт вже існував — дані оновлено");
+            }
             return ResponseEntity.status(HttpStatus.CREATED).body("Акт успішно збережено в БД");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

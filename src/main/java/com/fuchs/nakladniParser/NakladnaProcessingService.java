@@ -31,8 +31,11 @@ public class NakladnaProcessingService {
         this.aktRepository = aktRepository;
     }
 
+    /**
+     * @return true, якщо існуючий документ був оновлений (upsert), false — якщо створено новий
+     */
     @Transactional
-    public void processAndSaveNakladna(NakladnaDto dto) {
+    public boolean processAndSaveNakladna(NakladnaDto dto) {
         // СТВОРЮЄМО СУТНІСТЬ АКТУ
         AktEntity aktEntity = new AktEntity();
 
@@ -60,12 +63,6 @@ public class NakladnaProcessingService {
         aktEntity.setFileName(dto.getFileName());
         aktEntity.setUploadedTo1C(false);
 
-        // Перевірка на дублікати в таблиці актів
-        if (isDuplicate(aktEntity)) {
-            // Можете використовувати свій Exception
-            throw new RuntimeException("Документ з такими даними вже існує у базі!");
-        }
-
         // Обробка позицій (мапимо на AktItemEntity)
         if (dto.getProducts() != null) {
             dto.getProducts().forEach(productDto -> {
@@ -85,8 +82,42 @@ public class NakladnaProcessingService {
             });
         }
 
+        // Перевірка на дублікати в таблиці актів
+        Optional<AktEntity> existing = findDuplicate(aktEntity);
+        if (existing.isPresent()) {
+            // Документ з такими ключами вже є в БД — оновлюємо його новими даними
+            // замість того, щоб відхиляти завантаження
+            AktEntity target = existing.get();
+            updateEntity(target, aktEntity);
+            aktRepository.save(target);
+            return true;
+        }
+
         // Зберігаємо в загальну таблицю
         aktRepository.save(aktEntity);
+        return false;
+    }
+
+    /**
+     * Повністю переносить дані з щойно розпарсеної накладної (source) в існуючий запис (target).
+     */
+    private void updateEntity(AktEntity target, AktEntity source) {
+        target.setNumberDoc(source.getNumberDoc());
+        target.setTypeDoc(source.getTypeDoc());
+        target.setNameSupplier(source.getNameSupplier());
+        target.setCodeSupplier(source.getCodeSupplier());
+        target.setIpnSupplier(source.getIpnSupplier());
+        target.setIncludeTax(source.getIncludeTax());
+        target.setDateDoc(source.getDateDoc());
+        target.setAmountDoc(source.getAmountDoc());
+        target.setTaxDoc(source.getTaxDoc());
+        target.setFileName(source.getFileName());
+        target.setUploadedTo1C(false); // дані змінились — потрібен повторний вигруз в 1С
+
+        target.getItems().clear();
+        for (AktItemEntity item : source.getItems()) {
+            target.addItem(item);
+        }
     }
 
     // --- НАДІЙНИЙ ПАРСИНГ СУМ (ФІКС ПРОБЛЕМИ З ГРН) ---
@@ -173,25 +204,21 @@ public class NakladnaProcessingService {
     }
 
     @Transactional(readOnly = true)
-    public boolean isDuplicate(AktEntity aktEntity) {
-        Optional<AktEntity> duplicate;
-
+    public Optional<AktEntity> findDuplicate(AktEntity aktEntity) {
         String num = aktEntity.getNumberDoc() != null ? aktEntity.getNumberDoc() : "";
 
         if (aktEntity.getCodeSupplier() != null && !aktEntity.getCodeSupplier().isBlank()) {
-            duplicate = aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
+            return aktRepository.findByDateDocAndCodeSupplierAndNumberDoc(
                     aktEntity.getDateDoc(), aktEntity.getCodeSupplier(), num);
         } else if (aktEntity.getIpnSupplier() != null && !aktEntity.getIpnSupplier().isBlank()) {
-            duplicate = aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
+            return aktRepository.findByDateDocAndIpnSupplierAndNumberDoc(
                     aktEntity.getDateDoc(), aktEntity.getIpnSupplier(), num);
         } else {
-            // 3. ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
+            // ФОЛБЕК: Якщо обох кодів немає, перевіряємо за назвою, датою та номером
             // Запобігає дублюванню документів без розпізнаних кодів компанії
-            duplicate = aktRepository.findByDateDocAndNumberDocAndNameSupplier(aktEntity.getDateDoc(), num,  aktEntity.getNameSupplier());
-
+            return aktRepository.findByDateDocAndNumberDocAndNameSupplier(
+                    aktEntity.getDateDoc(), num, aktEntity.getNameSupplier());
         }
-
-        return duplicate.isPresent();
     }
 
 }
