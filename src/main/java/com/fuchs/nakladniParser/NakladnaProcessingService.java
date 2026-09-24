@@ -13,12 +13,18 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class NakladnaProcessingService {
 
     // ВИКОРИСТОВУЄМО РЕПОЗИТОРІЙ АКТІВ!
     private final AktRepository aktRepository;
+
+    // OCR інколи розпізнає скорочення "шт" як сміттєві значення - підміняємо їх на "шт"
+    private static final Set<String> GARBAGE_UNIT_VALUES = Set.of(
+            "யா", "LUIT", "LUT", "WUT", "WIJT", "LLIT", "LUST"
+    );
 
     private static final Map<String, Integer> UKR_MONTHS = Map.ofEntries(
             Map.entry("січня", 1), Map.entry("лютого", 2), Map.entry("березня", 3),
@@ -73,7 +79,7 @@ public class NakladnaProcessingService {
                 item.setQuantity(productDto.getQuantity().intValue());
                 item.setAmount(productDto.getAmount());
 
-                item.setUnits(productDto.getUnit() != null ? productDto.getUnit().replace("|", "").trim() : null);
+                item.setUnits(normalizeUnit(productDto.getUnit()));
 
                 // Ціна часто приходить як рядок "14,52"
                 item.setPrice(parseBigDecimal(productDto.getUnitPrice()));
@@ -152,6 +158,17 @@ public class NakladnaProcessingService {
         } catch (NumberFormatException e) {
             return null;
         }
+    }
+
+    private String normalizeUnit(String rawUnit) {
+        if (rawUnit == null) return null;
+        String cleanUnit = rawUnit.replace("|", "").trim();
+        for (String garbage : GARBAGE_UNIT_VALUES) {
+            if (garbage.equalsIgnoreCase(cleanUnit)) {
+                return "шт";
+            }
+        }
+        return cleanUnit;
     }
 
     private String normalizeNumber(String rawNumber) {
