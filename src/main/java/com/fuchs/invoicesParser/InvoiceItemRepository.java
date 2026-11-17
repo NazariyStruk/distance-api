@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long> {
 
@@ -20,4 +21,9 @@ public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long> 
     void resetStatusCustom(@Param("number") String number,
                            @Param("vendorTaxId") String vendorTaxId,
                            @Param("date") LocalDate date);
+
+    @Query("SELECT i.lineNumber FROM InvoiceItem i WHERE i.number = :number AND i.vendorTaxId = :vendorTaxId AND i.date = :date")
+    List<Integer> findLineNumbers(@Param("number") String number,
+                                  @Param("vendorTaxId") String vendorTaxId,
+                                  @Param("date") LocalDate date);
 }

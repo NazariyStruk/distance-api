@@ -1,0 +1,1888 @@
+[
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Item",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0515,
+    "top": 0.2892,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Material",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.099,
+    "top": 0.289,
+    "width": 0.05,
+    "height": 0.0094,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Quantity",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5115,
+    "top": 0.2888,
+    "width": 0.05,
+    "height": 0.0113,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "320",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0516,
+    "top": 0.5563,
+    "width": 0.05,
+    "height": 0.009,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "602008114",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0994,
+    "top": 0.5576,
+    "width": 0.05,
+    "height": 0.0093,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "30 K03",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5223,
+    "top": 0.556,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "380.7 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6511,
+    "top": 0.556,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "568.85 / 100 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.751,
+    "top": 0.5558,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "2,165.61",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.918,
+    "top": 0.5557,
+    "width": 0.05,
+    "height": 0.0103,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN GT1 FLEX 34 5W-30",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.575,
+    "width": 0.05,
+    "height": 0.0101,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Net",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5088,
+    "top": 0.5752,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "380.700 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6365,
+    "top": 0.575,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "330",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0516,
+    "top": 0.6774,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "602008114",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0994,
+    "top": 0.6788,
+    "width": 0.05,
+    "height": 0.0093,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "30 K03",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5224,
+    "top": 0.6772,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "380.7 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6511,
+    "top": 0.6772,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "568.85 / 100 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.751,
+    "top": 0.677,
+    "width": 0.05,
+    "height": 0.0099,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "2,165.61",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.9179,
+    "top": 0.677,
+    "width": 0.05,
+    "height": 0.0103,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN GT1 FLEX 34 5W-30",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.6961,
+    "width": 0.05,
+    "height": 0.0102,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Net",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5087,
+    "top": 0.6966,
+    "width": 0.05,
+    "height": 0.009,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "380.700 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6366,
+    "top": 0.6964,
+    "width": 0.05,
+    "height": 0.0095,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Managing directors:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0967,
+    "top": 0.9179,
+    "width": 0.05,
+    "height": 0.0088,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "930159298",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 9,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0276,
+    "top": 0.9352,
+    "width": 0.05,
+    "height": 0.0389,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "MOVING YOUR WORLD",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0985,
+    "top": 0.074,
+    "width": 0.05,
+    "height": 0.0131,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "103298349",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.7098,
+    "top": 0.2026,
+    "width": 0.05,
+    "height": 0.0117,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Page 13 of 18",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.8473,
+    "top": 0.2502,
+    "width": 0.05,
+    "height": 0.014,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Item",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0515,
+    "top": 0.2891,
+    "width": 0.05,
+    "height": 0.0094,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Material",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0988,
+    "top": 0.2888,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Quantity",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5113,
+    "top": 0.2886,
+    "width": 0.05,
+    "height": 0.0115,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Quantity",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6543,
+    "top": 0.2885,
+    "width": 0.05,
+    "height": 0.0115,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Price",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.8185,
+    "top": 0.2888,
+    "width": 0.05,
+    "height": 0.0095,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Amount",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.919,
+    "top": 0.2887,
+    "width": 0.05,
+    "height": 0.0099,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "430",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0513,
+    "top": 0.3118,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "602007315",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.3133,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN GT1 PRO C-3 5W-30",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0987,
+    "top": 0.3303,
+    "width": 0.05,
+    "height": 0.0107,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "carton 3x5L canister",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.3485,
+    "width": 0.05,
+    "height": 0.0099,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Premium Motorenöl",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0992,
+    "top": 0.3655,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "This item is currently only available in limited quantities and will not be dispatched automatically. We will contact you as soon as we have more",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0988,
+    "top": 0.3815,
+    "width": 0.05,
+    "height": 0.0115,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Custom tariff no:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0993,
+    "top": 0.4191,
+    "width": 0.05,
+    "height": 0.0102,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "34031980",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.2897,
+    "top": 0.419,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "/ Country of origin:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.3941,
+    "top": 0.419,
+    "width": 0.05,
+    "height": 0.0114,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "DE",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5947,
+    "top": 0.419,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "No Stock",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0992,
+    "top": 0.4506,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "440",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0513,
+    "top": 0.4799,
+    "width": 0.05,
+    "height": 0.0091,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "601226403",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0993,
+    "top": 0.4811,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN GT1 PRO C-3 5W-30",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0988,
+    "top": 0.4985,
+    "width": 0.05,
+    "height": 0.0106,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "60L drum",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0989,
+    "top": 0.5165,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "450",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0514,
+    "top": 0.6309,
+    "width": 0.05,
+    "height": 0.0091,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "602070593",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0992,
+    "top": 0.6321,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "1 EA",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5368,
+    "top": 0.6305,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "51.3 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6584,
+    "top": 0.6305,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "477.46 / 100 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.7505,
+    "top": 0.6303,
+    "width": 0.05,
+    "height": 0.0101,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "244.94",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.9287,
+    "top": 0.6304,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN SINTOFLUID 75W-80",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0988,
+    "top": 0.6494,
+    "width": 0.05,
+    "height": 0.0107,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Net",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5084,
+    "top": 0.6498,
+    "width": 0.05,
+    "height": 0.0095,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "51.300 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6437,
+    "top": 0.6496,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "60L drum",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0989,
+    "top": 0.6672,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Tare",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5085,
+    "top": 0.6632,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "3.900 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6513,
+    "top": 0.663,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Custom tariff no:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0993,
+    "top": 0.6911,
+    "width": 0.05,
+    "height": 0.0102,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "27101987",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.2891,
+    "top": 0.6909,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "/ Country of origin:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.394,
+    "top": 0.6907,
+    "width": 0.05,
+    "height": 0.0117,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "DE",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5945,
+    "top": 0.6911,
+    "width": 0.05,
+    "height": 0.0094,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "On Stock",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0992,
+    "top": 0.7223,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "460",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0513,
+    "top": 0.7519,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "602183736",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.753,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "36 K12",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.522,
+    "top": 0.7517,
+    "width": 0.05,
+    "height": 0.0095,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "375.84 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6431,
+    "top": 0.7515,
+    "width": 0.05,
+    "height": 0.0097,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "434.85 / 100 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.7505,
+    "top": 0.7515,
+    "width": 0.05,
+    "height": 0.0099,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "1,634.34",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.9191,
+    "top": 0.7516,
+    "width": 0.05,
+    "height": 0.0101,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "TITAN SINTOFLUID FE 75W",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0985,
+    "top": 0.7704,
+    "width": 0.05,
+    "height": 0.0105,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Net",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5086,
+    "top": 0.7709,
+    "width": 0.05,
+    "height": 0.0093,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "375.840 KG",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.6363,
+    "top": 0.7707,
+    "width": 0.05,
+    "height": 0.0098,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "carton 12x1L bottle",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.099,
+    "top": 0.7882,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Custom tariff no:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0992,
+    "top": 0.8124,
+    "width": 0.05,
+    "height": 0.01,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "27101987",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.2892,
+    "top": 0.8123,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "/ Country of origin:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.3938,
+    "top": 0.8122,
+    "width": 0.05,
+    "height": 0.0112,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "DE",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.5946,
+    "top": 0.8125,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "No Stock",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0991,
+    "top": 0.8438,
+    "width": 0.05,
+    "height": 0.0096,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "HQ and commercial register:",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0967,
+    "top": 0.888,
+    "width": 0.05,
+    "height": 0.0092,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "Mannheim HRB 9154",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0968,
+    "top": 0.898,
+    "width": 0.05,
+    "height": 0.0082,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ },
+ {
+  "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+  "text": "930159298",
+  "location": {
+   "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+   "page@odata.type": "#Int64",
+   "page": 13,
+   "boundingBox": {
+    "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+    "left": 0.0274,
+    "top": 0.9351,
+    "width": 0.05,
+    "height": 0.039,
+    "polygon": {
+     "@odata.type": "#Microsoft.Dynamics.CRM.expando",
+     "coordinates@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+     "coordinates": []
+    }
+   },
+   "spans@odata.type": "#Collection(Microsoft.Dynamics.CRM.crmbaseentity)",
+   "spans": []
+  }
+ }
+]
